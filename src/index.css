@@ -7,70 +7,70 @@
 
 @layer base {
   :root {
-    --background: 252 252 252;
-    --foreground: 51 51 51;
+    --background: 249 250 251;
+    --foreground: 55 65 81;
 
     --card: 255 255 255;
-    --card-foreground: 51 51 51;
+    --card-foreground: 55 65 81;
 
     --popover: 255 255 255;
-    --popover-foreground: 51 51 51;
+    --popover-foreground: 55 65 81;
 
-    --primary: 236 72 153;
+    --primary: 99 102 241;
     --primary-foreground: 255 255 255;
 
-    --secondary: 248 250 252;
-    --secondary-foreground: 71 85 105;
+    --secondary: 243 244 246;
+    --secondary-foreground: 75 85 99;
 
-    --muted: 248 250 252;
-    --muted-foreground: 100 116 139;
+    --muted: 243 244 246;
+    --muted-foreground: 107 114 128;
 
-    --accent: 239 68 68;
-    --accent-foreground: 255 255 255;
+    --accent: 156 163 175;
+    --accent-foreground: 55 65 81;
 
     --destructive: 239 68 68;
     --destructive-foreground: 255 255 255;
 
-    --border: 226 232 240;
-    --input: 226 232 240;
-    --ring: 236 72 153;
+    --border: 229 231 235;
+    --input: 229 231 235;
+    --ring: 99 102 241;
 
     --radius: 0.75rem;
 
-    --bimbi-pink: 252 165 165;
-    --bimbi-blue: 147 197 253;
-    --bimbi-purple: 196 181 253;
-    --bimbi-yellow: 254 240 138;
+    --bimbi-pink: 243 232 255;
+    --bimbi-blue: 219 234 254;
+    --bimbi-purple: 237 233 254;
+    --bimbi-yellow: 254 249 195;
   }
 
   .dark {
-    --background: 15 23 42;
-    --foreground: 248 250 252;
+    --background: 31 41 55;
+    --foreground: 243 244 246;
 
-    --card: 30 41 59;
-    --card-foreground: 248 250 252;
+    --card: 55 65 81;
+    --card-foreground: 243 244 246;
 
-    --popover: 30 41 59;
-    --popover-foreground: 248 250 252;
+    --popover: 55 65 81;
+    --popover-foreground: 243 244 246;
 
-    --primary: 236 72 153;
-    --primary-foreground: 255 255 255;
+    --primary: 129 140 248;
+    --primary-foreground: 17 24 39;
 
-    --secondary: 51 65 85;
-    --secondary-foreground: 248 250 252;
+    --secondary: 75 85 99;
+    --secondary-foreground: 243 244 246;
 
-    --muted: 51 65 85;
-    --muted-foreground: 148 163 184;
+    --muted: 75 85 99;
+    --muted-foreground: 156 163 175;
 
-    --accent: 239 68 68;
-    --accent-foreground: 255 255 255;
+    --accent: 107 114 128;
+    --accent-foreground: 243 244 246;
 
     --destructive: 239 68 68;
     --destructive-foreground: 255 255 255;
 
-    --border: 51 65 85;
-    --input: 51 65 85;
-    --ring: 236 72 153;
+    --border: 75 85 99;
+    --input: 75 85 99;
+    --ring: 129 140 248;
   }
 }
 
@@ -84,11 +84,11 @@
   }
 
   .gradient-bg {
-    background: linear-gradient(135deg, rgb(252, 165, 165) 0%, rgb(147, 197, 253) 50%, rgb(196, 181, 253) 100%);
+    background: linear-gradient(135deg, rgb(243, 232, 255) 0%, rgb(219, 234, 254) 50%, rgb(237, 233, 254) 100%);
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, rgb(236, 72, 153) 0%, rgb(147, 197, 253) 100%);
+    background: linear-gradient(135deg, rgb(99, 102, 241) 0%, rgb(129, 140, 248) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

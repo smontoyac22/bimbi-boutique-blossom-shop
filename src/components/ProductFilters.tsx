@@ -98,7 +98,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
               max={100}
               min={0}
               step={5}
-              className="mb-2"
+              className="mb-2 slider-track"
             />
             <div className="flex justify-between text-sm text-muted-foreground">
               <span>${filters.priceRange[0]}</span>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -54,16 +53,16 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                           filters.inStock;
 
   return (
-    <Card className="sticky top-24">
+    <Card className="sticky top-24 glass-effect">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-lg">Filtros</CardTitle>
+          <CardTitle className="text-lg text-gradient">Filtros</CardTitle>
           {hasActiveFilters && (
             <Button 
               variant="ghost" 
               size="sm" 
               onClick={onClearFilters}
-              className="text-muted-foreground hover:text-foreground"
+              className="text-muted-foreground hover:text-foreground hover-lift"
             >
               Limpiar
             </Button>
@@ -81,6 +80,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
               onCheckedChange={(checked) => 
                 onFiltersChange({ ...filters, inStock: !!checked })
               }
+              className="hover-lift"
             />
             <label htmlFor="inStock" className="text-sm font-medium">
               Solo productos en stock
@@ -90,7 +90,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
 
         {/* Price Range */}
         <div>
-          <h4 className="font-medium mb-3">Rango de Precio</h4>
+          <h4 className="font-medium mb-3 text-gradient">Rango de Precio</h4>
           <div className="px-2">
             <Slider
               value={filters.priceRange}
@@ -98,7 +98,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
               max={100}
               min={0}
               step={5}
-              className="mb-2"
+              className="mb-2 slider-track"
             />
             <div className="flex justify-between text-sm text-muted-foreground">
               <span>${filters.priceRange[0]}</span>
@@ -109,7 +109,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
 
         {/* Sizes */}
         <div>
-          <h4 className="font-medium mb-3">Tallas</h4>
+          <h4 className="font-medium mb-3 text-gradient">Tallas</h4>
           <div className="grid grid-cols-3 gap-2">
             {availableSizes.map(size => (
               <div key={size} className="flex items-center space-x-2">
@@ -117,6 +117,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                   id={`size-${size}`}
                   checked={filters.sizes.includes(size)}
                   onCheckedChange={(checked) => handleSizeChange(size, !!checked)}
+                  className="hover-lift"
                 />
                 <label htmlFor={`size-${size}`} className="text-sm">
                   {size}
@@ -128,7 +129,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
 
         {/* Colors */}
         <div>
-          <h4 className="font-medium mb-3">Colores</h4>
+          <h4 className="font-medium mb-3 text-gradient">Colores</h4>
           <div className="space-y-2">
             {availableColors.map(color => (
               <div key={color} className="flex items-center space-x-2">
@@ -136,6 +137,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                   id={`color-${color}`}
                   checked={filters.colors.includes(color)}
                   onCheckedChange={(checked) => handleColorChange(color, !!checked)}
+                  className="hover-lift"
                 />
                 <label htmlFor={`color-${color}`} className="text-sm">
                   {color}
@@ -148,25 +150,25 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
         {/* Active Filters Summary */}
         {hasActiveFilters && (
           <div>
-            <h4 className="font-medium mb-3">Filtros Activos</h4>
+            <h4 className="font-medium mb-3 text-gradient">Filtros Activos</h4>
             <div className="flex flex-wrap gap-1">
               {filters.sizes.map(size => (
-                <Badge key={size} variant="secondary" className="text-xs">
+                <Badge key={size} variant="secondary" className="text-xs badge-gradient">
                   Talla {size}
                 </Badge>
               ))}
               {filters.colors.map(color => (
-                <Badge key={color} variant="secondary" className="text-xs">
+                <Badge key={color} variant="secondary" className="text-xs badge-gradient">
                   {color}
                 </Badge>
               ))}
               {filters.inStock && (
-                <Badge variant="secondary" className="text-xs">
+                <Badge variant="secondary" className="text-xs badge-gradient">
                   En stock
                 </Badge>
               )}
               {(filters.priceRange[0] > 0 || filters.priceRange[1] < 100) && (
-                <Badge variant="secondary" className="text-xs">
+                <Badge variant="secondary" className="text-xs badge-gradient">
                   ${filters.priceRange[0]}-${filters.priceRange[1]}
                 </Badge>
               )}

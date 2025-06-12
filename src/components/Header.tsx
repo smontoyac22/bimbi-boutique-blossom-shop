@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Search, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -27,16 +26,16 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, onCategoryChange, sele
     { id: 'all', label: 'Todo', color: 'bg-bimbi-pink' },
     { id: 'ninos', label: 'Niños', color: 'bg-bimbi-blue' },
     { id: 'ninas', label: 'Niñas', color: 'bg-bimbi-purple' },
-    { id: 'mujeres', label: 'Mujeres', color: 'bg-primary' }
+    { id: 'mujeres', label: 'Mujeres', color: 'bg-bimbi-yellow' }
   ];
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+      <header className="sticky top-0 z-50 glass-effect border-b">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 hover-lift">
               <div className="w-10 h-10 gradient-bg rounded-full flex items-center justify-center">
                 <span className="text-white font-bold text-xl">B</span>
               </div>
@@ -52,7 +51,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, onCategoryChange, sele
                   placeholder="Buscar productos..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 bg-secondary/50"
+                  className="pl-10 glass-effect hover:border-primary/50 transition-colors"
                 />
               </div>
             </form>
@@ -61,12 +60,12 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, onCategoryChange, sele
             <Button
               variant="outline"
               size="icon"
-              className="relative"
+              className="relative hover-lift"
               onClick={() => setIsCartOpen(true)}
             >
               <ShoppingCart className="h-5 w-5" />
               {itemCount > 0 && (
-                <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs">
+                <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs badge-gradient">
                   {itemCount}
                 </Badge>
               )}
@@ -81,7 +80,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, onCategoryChange, sele
                 variant={selectedCategory === category.id ? "default" : "outline"}
                 size="sm"
                 onClick={() => onCategoryChange(category.id)}
-                className={`${selectedCategory === category.id ? category.color : ''} transition-all hover:scale-105`}
+                className={`${selectedCategory === category.id ? category.color : ''} hover-lift transition-all`}
               >
                 {category.label}
               </Button>

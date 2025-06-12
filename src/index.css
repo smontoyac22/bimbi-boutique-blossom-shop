@@ -6,70 +6,37 @@
 
 @layer base {
   :root {
-    --background: 252 252 252;
-    --foreground: 51 51 51;
-
-    --card: 255 255 255;
-    --card-foreground: 51 51 51;
-
-    --popover: 255 255 255;
-    --popover-foreground: 51 51 51;
-
-    --primary: 21 101 117;
-    --primary-foreground: 255 255 255;
-
-    --secondary: 248 250 252;
-    --secondary-foreground: 71 85 105;
-
-    --muted: 248 250 252;
-    --muted-foreground: 100 116 139;
-
-    --accent: 239 68 68;
-    --accent-foreground: 255 255 255;
-
-    --destructive: 239 68 68;
-    --destructive-foreground: 255 255 255;
-
-    --border: 226 232 240;
-    --input: 226 232 240;
-    --ring: 21 101 117;
-
-    --radius: 0.75rem;
-
+    /* Brand Colors */
     --bimbi-pink: 252 165 165;
     --bimbi-blue: 147 197 253;
     --bimbi-purple: 196 181 253;
-    --bimbi-yellow: 255 228 168;
+    --bimbi-yellow: 253 224 71;
+    --bimbi-green: 134 239 172;
+
+    /* UI Colors */
+    --card: 216, 180, 248;
+    --accent: 216, 180, 248;
+    --destructive: 216, 180, 248;
+    --border: 216, 180, 248;
+    --input: 216, 180, 248;
+    --ring: 216, 180, 248;
+
+    /* Spacing */
+    --radius: 0.75rem;
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
   }
 
   .dark {
-    --background: 15 23 42;
-    --foreground: 248 250 252;
-
-    --card: 30 41 59;
-    --card-foreground: 248 250 252;
-
-    --popover: 30 41 59;
-    --popover-foreground: 248 250 252;
-
-    --primary: 21 101 117;
-    --primary-foreground: 255 255 255;
-
-    --secondary: 51 65 85;
-    --secondary-foreground: 248 250 252;
-
-    --muted: 51 65 85;
-    --muted-foreground: 148 163 184;
-
-    --accent: 239 68 68;
-    --accent-foreground: 255 255 255;
-
-    --destructive: 239 68 68;
-    --destructive-foreground: 255 255 255;
-
-    --border: 51 65 85;
-    --input: 51 65 85;
-    --ring: 21 101 117;
+    /* Dark mode colors will be added here */
   }
 }
 
@@ -82,8 +49,19 @@
     @apply bg-background text-foreground font-sans;
   }
 
+  /* Enhanced Gradients */
   .gradient-bg {
     background: linear-gradient(135deg, rgb(252, 165, 165) 0%, rgb(147, 197, 253) 50%, rgb(196, 181, 253) 100%);
+  }
+
+  .gradient-bg-hover {
+    background: linear-gradient(135deg, rgb(252, 165, 165) 0%, rgb(147, 197, 253) 50%, rgb(196, 181, 253) 100%);
+    transition: all 0.3s ease;
+  }
+
+  .gradient-bg-hover:hover {
+    filter: brightness(1.1);
+    transform: scale(1.02);
   }
 
   .text-gradient {
@@ -92,8 +70,30 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  /* New Utility Classes */
+  .glass-effect {
+    @apply bg-background/80 backdrop-blur-lg border border-border/50;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:border-primary/50;
+  }
+
+  .button-gradient {
+    @apply bg-gradient-to-r from-bimbi-pink to-bimbi-blue text-white hover:opacity-90 transition-opacity;
+  }
+
+  .badge-gradient {
+    @apply bg-gradient-to-r from-bimbi-pink/20 to-bimbi-blue/20 text-primary;
+  }
 }
 
+/* Enhanced Animations */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
@@ -104,10 +104,45 @@
   50% { opacity: 0.8; }
 }
 
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
 
 .animate-pulse-soft {
   animation: pulse-soft 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/50 rounded-full hover:bg-primary/70 transition-colors;
+}
+
+/* Focus Styles */
+:focus-visible {
+  @apply outline-none ring-2 ring-primary ring-offset-2;
+}
+
+/* Selection Styles */
+::selection {
+  @apply bg-primary/20 text-primary;
 }

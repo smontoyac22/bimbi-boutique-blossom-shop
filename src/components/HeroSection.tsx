@@ -30,7 +30,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onShopNow }) => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 size="lg" 
-                className="bg-primary hover:bg-primary/90 text-black px-8 py-6 text-lg group"
+                className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg group"
                 onClick={onShopNow}
               >
                 Comprar Ahora
@@ -39,7 +39,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onShopNow }) => {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="px-8 py-6 text-lg border-primary text-primary hover:bg-primary hover-lift"
+                className="px-8 py-6 text-lg border-primary text-primary hover:bg-primary hover:text-white"
               >
                 Ver Colección
               </Button>

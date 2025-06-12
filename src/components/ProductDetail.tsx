@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
@@ -52,9 +53,9 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, isOpen, o
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto glass-effect bg-white">
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-2xl text-gradient">{product.name}</DialogTitle>
+          <DialogTitle className="text-2xl">{product.name}</DialogTitle>
         </DialogHeader>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -63,16 +64,16 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, isOpen, o
             <img
               src={product.imageUrl}
               alt={product.name}
-              className="w-full h-96 object-cover rounded-lg hover-lift"
+              className="w-full h-96 object-cover rounded-lg"
             />
             <div className="absolute top-4 left-4">
-              <Badge className="badge-gradient">
+              <Badge className="bg-primary text-white">
                 {getCategoryLabel(product.category)}
               </Badge>
             </div>
             {product.featured && (
               <div className="absolute top-4 right-4">
-                <Badge className="badge-gradient">
+                <Badge className="bg-bimbi-yellow text-yellow-800">
                   Destacado
                 </Badge>
               </div>
@@ -82,7 +83,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, isOpen, o
           {/* Product Info */}
           <div className="space-y-6">
             <div>
-              <h2 className="text-3xl font-bold text-gradient mb-2">${product.price}</h2>
+              <h2 className="text-3xl font-bold text-primary mb-2">${product.price}</h2>
               <p className="text-muted-foreground leading-relaxed">{product.description}</p>
             </div>
 
@@ -90,12 +91,12 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, isOpen, o
             <div>
               <label className="block text-sm font-medium mb-2">Talla</label>
               <Select value={selectedSize} onValueChange={setSelectedSize}>
-                <SelectTrigger className="hover-lift bg-white">
+                <SelectTrigger>
                   <SelectValue placeholder="Selecciona una talla" />
                 </SelectTrigger>
-                <SelectContent className="bg-white">
+                <SelectContent>
                   {product.sizes.map((size) => (
-                    <SelectItem key={size} value={size} className="hover:bg-gray-100">
+                    <SelectItem key={size} value={size}>
                       {size}
                     </SelectItem>
                   ))}
@@ -107,12 +108,12 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, isOpen, o
             <div>
               <label className="block text-sm font-medium mb-2">Color</label>
               <Select value={selectedColor} onValueChange={setSelectedColor}>
-                <SelectTrigger className="hover-lift bg-white">
+                <SelectTrigger>
                   <SelectValue placeholder="Selecciona un color" />
                 </SelectTrigger>
-                <SelectContent className="bg-white">
+                <SelectContent>
                   {product.colors.map((color) => (
-                    <SelectItem key={color} value={color} className="hover:bg-gray-100">
+                    <SelectItem key={color} value={color}>
                       {color}
                     </SelectItem>
                   ))}
@@ -124,12 +125,12 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, isOpen, o
             <div>
               <label className="block text-sm font-medium mb-2">Cantidad</label>
               <Select value={quantity.toString()} onValueChange={(value) => setQuantity(parseInt(value))}>
-                <SelectTrigger className="w-24 hover-lift bg-white">
+                <SelectTrigger className="w-24">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-white">
+                <SelectContent>
                   {[1, 2, 3, 4, 5].map((num) => (
-                    <SelectItem key={num} value={num.toString()} className="hover:bg-gray-100">
+                    <SelectItem key={num} value={num.toString()}>
                       {num}
                     </SelectItem>
                   ))}
@@ -140,7 +141,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, isOpen, o
             {/* Stock Status */}
             <div>
               {product.inStock ? (
-                <Badge className="badge-gradient">En Stock</Badge>
+                <Badge className="bg-green-100 text-green-800">En Stock</Badge>
               ) : (
                 <Badge variant="destructive">Agotado</Badge>
               )}
@@ -148,7 +149,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product, isOpen, o
 
             {/* Add to Cart Button */}
             <Button
-              className="w-full button-gradient h-12 text-lg"
+              className="w-full bg-primary hover:bg-primary/90 h-12 text-lg"
               onClick={handleAddToCart}
               disabled={!product.inStock}
             >

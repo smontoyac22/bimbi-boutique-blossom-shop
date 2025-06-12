@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -31,21 +32,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onViewDetails
   };
 
   return (
-    <Card className="group overflow-hidden border-0 shadow-lg card-hover h-[420px] flex flex-col">
-      <div className="relative overflow-hidden h-64">
+    <Card className="group overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+      <div className="relative overflow-hidden">
         <img
           src={product.imageUrl}
           alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
         />
         <div className="absolute top-3 left-3">
-          <Badge className={`${getCategoryColor(product.category)} badge-gradient`}>
+          <Badge className={getCategoryColor(product.category)}>
             {getCategoryLabel(product.category)}
           </Badge>
         </div>
         {product.featured && (
           <div className="absolute top-3 right-3">
-            <Badge className="badge-gradient">
+            <Badge className="bg-bimbi-yellow text-yellow-800">
               Destacado
             </Badge>
           </div>
@@ -59,18 +60,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onViewDetails
         )}
       </div>
 
-      <CardContent className="p-4 flex-1 flex flex-col">
-        <div className="flex-1">
-          <h3 className="font-semibold text-lg mb-2 line-clamp-2 h-14">{product.name}</h3>
-          <p className="text-muted-foreground text-sm mb-3 line-clamp-2 h-10">{product.description}</p>
-        </div>
-        <div className="flex items-center justify-between mt-auto">
-          <span className="text-2xl font-bold text-gradient">${product.price}</span>
+      <CardContent className="p-4">
+        <h3 className="font-semibold text-lg mb-2 line-clamp-2">{product.name}</h3>
+        <p className="text-muted-foreground text-sm mb-3 line-clamp-2">{product.description}</p>
+        <div className="flex items-center justify-between">
+          <span className="text-2xl font-bold text-primary">${product.price}</span>
           <div className="flex space-x-1">
             {product.colors.slice(0, 3).map((color, index) => (
               <div
                 key={index}
-                className="w-4 h-4 rounded-full border-2 border-black shadow-sm hover:scale-110 transition-transform"
+                className="w-4 h-4 rounded-full border-2 border-white shadow-sm"
                 style={{ backgroundColor: color.toLowerCase() }}
                 title={color}
               />
@@ -84,16 +83,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onViewDetails
         </div>
       </CardContent>
 
-      <CardFooter className="p-4 pt-0 space-x-2 mt-auto">
+      <CardFooter className="p-4 pt-0 space-x-2">
         <Button 
           variant="outline" 
-          className="flex-1 hover-lift"
+          className="flex-1"
           onClick={() => onViewDetails(product)}
         >
           Ver Detalles
         </Button>
         <Button 
-          className="flex-1 button-gradient"
+          className="flex-1 bg-primary hover:bg-primary/90"
           onClick={() => onAddToCart(product)}
           disabled={!product.inStock}
         >
